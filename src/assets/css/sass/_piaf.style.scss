@@ -44,6 +44,8 @@ Table of Contents
 */
 
 /* 00.Variables and Imports */
+@import "_direction-rtl.scss";
+
 @import url("https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700");
 
 $main-menu-item-height: 110px;
@@ -150,9 +152,9 @@ body {
   height: 100%;
   position: fixed;
   top: 0;
-  right: 0;
+  #{$end-direction}: 0;
   bottom: 0;
-  left: 0;
+  #{$start-direction}: 0;
 }
 
 h1 {
@@ -236,8 +238,8 @@ hr {
 }
 
 .ps-container {
-  margin-right: -15px;
-  padding-right: 15px;
+  margin-#{$end-direction}: -15px;
+  padding-#{$end-direction}: 15px;
   position: relative;
 }
 
@@ -246,14 +248,14 @@ hr {
 }
 
 .ps__scrollbar-y {
-  left: 0 !important;
+  #{$start-direction}: 0 !important;
 }
 
 .ps__scrollbar-y-rail:hover>.ps__scrollbar-y,
 .ps__scrollbar-y-rail:focus>.ps__scrollbar-y,
 .ps__scrollbar-y-rail.ps--clicking .ps__scrollbar-y {
   width: 5px !important;
-  left: 0 !important;
+  #{$start-direction}: 0 !important;
 }
 
 .ps__scrollbar-y {
@@ -272,9 +274,9 @@ hr {
     height: 1.25em;
     border-radius: .75em;
     line-height: 0.65em;
-    left: 50%;
+    #{$start-direction}: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50% * $transform-direction, -50%);
     font-size: 1.75em;
     width: 2em;
     text-align: center;
@@ -661,7 +663,10 @@ button {
   box-shadow: none !important;
   box-shadow: initial !important;
   font-size: 0.8rem;
-  padding: 0.75rem 1.3rem 0.6rem 1.3rem;
+  padding-top: 0.75rem;
+  padding-#{$end-direction}: 1.3rem;
+  padding-bottom: 0.6rem;
+  padding-#{$start-direction}: 1.3rem;
   transition: background-color box-shadow 0.1s linear;
 }
 
@@ -706,12 +711,12 @@ button {
   cursor: default !important;
 
   button {
-    padding-left: 10px;
-    padding-right: 7px;
+    padding-#{$start-direction}: 10px;
+    padding-#{$end-direction}: 7px;
 
     &:first-of-type {
-      padding-left: 17px;
-      padding-right: 5px;
+      padding-#{$start-direction}: 17px;
+      padding-#{$end-direction}: 5px;
     }
   }
 
@@ -786,12 +791,12 @@ button {
 }
 
 .btn-primary.btn-primary-gradient {
-  background: linear-gradient(to right,
+  background: linear-gradient(to #{$end-direction},
     $theme-color-1,
     darken($theme-color-1, 15%));
 
   &:hover {
-    background: linear-gradient(to right,
+    background: linear-gradient(to #{$end-direction},
       $theme-color-1,
       darken($theme-color-1, 8%));
   }
@@ -800,18 +805,18 @@ button {
 .btn-primary-gradient:not(:disabled):not(.disabled):active,
 .btn-primary-gradient:not(:disabled):not(.disabled).active,
 .show>.btn-primary-gradient.dropdown-toggle {
-  background: linear-gradient(to right,
+  background: linear-gradient(to #{$end-direction},
     $theme-color-1,
     darken($theme-color-1, 15%));
 }
 
 .btn-secondary-gradient {
-  background: linear-gradient(to right,
+  background: linear-gradient(to #{$end-direction},
     $theme-color-2,
     darken($theme-color-2, 15%));
 
   &:hover {
-    background: linear-gradient(to right,
+    background: linear-gradient(to #{$end-direction},
       $theme-color-2,
       darken($theme-color-2, 8%));
   }
@@ -820,7 +825,7 @@ button {
 .btn-secondary-gradient:not(:disabled):not(.disabled):active,
 .btn-secondary-gradient:not(:disabled):not(.disabled).active,
 .show>.btn-secondary-gradient.dropdown-toggle {
-  background: linear-gradient(to right,
+  background: linear-gradient(to #{$end-direction},
     $theme-color-2,
     darken($theme-color-2, 15%));
 }
@@ -1014,7 +1019,10 @@ button {
   line-height: 1.5;
   font-weight: 700;
   letter-spacing: 0.05rem;
-  padding: 0.75rem 2.6rem 0.6rem 2.6rem;
+  padding-top: 0.75rem;
+  padding-#{$end-direction}: 2.6rem;
+  padding-bottom: 0.6rem;
+  padding-#{$start-direction}: 2.6rem;
 }
 
 .btn-sm,
@@ -1026,7 +1034,10 @@ button {
 
 .btn-xs,
 .btn-group-xs>.btn {
-  padding: 0.25rem 0.75rem 0.25rem 0.75rem;
+  padding-top: 0.25rem;
+  padding-#{$end-direction}: 0.75rem;
+  padding-bottom: 0.25rem;
+  padding-#{$start-direction}: 0.75rem;
   font-size: 0.76rem;
   line-height: 1.3;
 }
@@ -1047,14 +1058,14 @@ button {
 
 .btn-group>.btn:not(:last-child):not(.dropdown-toggle),
 .btn-group>.btn-group:not(:last-child)>.btn {
-  border-top-right-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
+  border-top-#{$end-direction}-radius: 0 !important;
+  border-bottom-#{$end-direction}-radius: 0 !important;
 }
 
 .btn-group>.btn:not(:first-child),
 .btn-group>.btn-group:not(:first-child)>.btn {
-  border-top-left-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
+  border-top-#{$start-direction}-radius: 0 !important;
+  border-bottom-#{$start-direction}-radius: 0 !important;
 }
 
 .btn-link {
@@ -1085,8 +1096,8 @@ button {
   .spinner,
   .icon {
     position: absolute;
-    left: 0;
-    right: 0;
+    #{$start-direction}: 0;
+    #{$end-direction}: 0;
     margin: 0 auto;
     opacity: 0;
     visibility: hidden;
@@ -1169,16 +1180,16 @@ button {
   }
 }
 
-.top-right-button {
+.top-#{$end-direction}-button {
   width: calc(100% - 80px);
 
   @include respond-below(xs) {
-    padding-left: 0;
-    padding-right: 0;
+    padding-#{$start-direction}: 0;
+    padding-#{$end-direction}: 0;
   }
 }
 
-.top-right-button-single {
+.top-#{$end-direction}-button-single {
   width: unset;
 
   @include respond-below(md) {
@@ -1248,11 +1259,11 @@ button {
 }
 
 .r-0 {
-  right: 0;
+  #{$end-direction}: 0;
 }
 
 .l-0 {
-  left: 0;
+  #{$start-direction}: 0;
 }
 
 .min-width-zero {
@@ -1275,12 +1286,12 @@ button {
   border: 1px solid $separator-color-light !important;
 }
 
-.border-right {
-  border-right: 1px solid $separator-color-light !important;
+.border-#{$end-direction} {
+  border-#{$end-direction}: 1px solid $separator-color-light !important;
 }
 
-.border-left {
-  border-left: 1px solid $separator-color-light !important;
+.border-#{$start-direction} {
+  border-#{$start-direction}: 1px solid $separator-color-light !important;
 }
 
 .border-top {
@@ -1360,32 +1371,35 @@ button {
 }
 
 .badge {
-  padding: 0.55em 0.75em 0.6em 0.75em;
+  padding-top: 0.55em;
+  padding-#{$end-direction}: 0.75em;
+  padding-bottom: 0.6em;
+  padding-#{$start-direction}: 0.75em;
   font-size: 75%;
 
   &.badge-pill {
-    padding-right: 1.25em;
-    padding-left: 1.25em;
+    padding-#{$end-direction}: 1.25em;
+    padding-#{$start-direction}: 1.25em;
   }
 
-  &.badge-top-left {
+  &.badge-top-#{$start-direction} {
     top: 10px;
-    left: -7px;
+    #{$start-direction}: -7px;
   }
 
-  &.badge-top-left-2 {
+  &.badge-top-#{$start-direction}-2 {
     top: 40px;
-    left: -7px;
+    #{$start-direction}: -7px;
   }
 
-  &.badge-top-right {
+  &.badge-top-#{$end-direction} {
     top: 8px;
-    right: -7px;
+    #{$end-direction}: -7px;
   }
 
-  &.badge-top-right-2 {
+  &.badge-top-#{$end-direction}-2 {
     top: 40px;
-    right: -7px;
+    #{$end-direction}: -7px;
   }
 }
 
@@ -1496,7 +1510,7 @@ button {
   position: absolute;
   width: 100%;
   height: 5px;
-  left: 0;
+  #{$start-direction}: 0;
   top: 0;
 }
 
@@ -1508,7 +1522,7 @@ button {
   position: absolute;
   width: 100%;
   height: 2px;
-  left: 0;
+  #{$start-direction}: 0;
   bottom: 0;
   top: unset;
 }
@@ -1517,10 +1531,10 @@ button {
   border: initial;
   padding-top: 1rem;
   background: initial;
-  padding-left: 0;
+  padding-#{$start-direction}: 0;
   padding-top: 0.5rem;
-  padding-right: 0;
-  margin-right: 1.5rem;
+  padding-#{$end-direction}: 0;
+  margin-#{$end-direction}: 1.5rem;
   font-weight: 600;
   letter-spacing: 0.5px;
   color: $secondary-color;
@@ -1547,8 +1561,8 @@ button {
 
 .slider-nav {
 
-  .left-arrow,
-  .right-arrow {
+  .#{$start-direction}-arrow,
+  .#{$end-direction}-arrow {
     font-size: 20px;
     color: $theme-color-1;
     display: inline-block;
@@ -1636,14 +1650,17 @@ button {
 .navbar {
   background: $foreground-color;
   height: $navbar-height;
-  padding: 1.5rem $main-margin 1.5rem 0;
+  padding-top: 1.5rem;
+  padding-#{$end-direction}: $main-margin;
+  padding-bottom: 1.5rem;
+  padding-#{$start-direction}: 0;
   @include depth(1);
 
   .notificationDropdown {
     width: 260px;
     padding: 1.5rem;
     height: 280px;
-    right: 15px;
+    #{$end-direction}: 15px;
 
     .ps-container {
       height: 250px;
@@ -1726,8 +1743,8 @@ button {
     width: 110px;
     height: 35px;
     position: absolute;
-    left: 0;
-    right: 0;
+    #{$start-direction}: 0;
+    #{$end-direction}: 0;
     margin: 0 auto;
 
     .logo {
@@ -1761,8 +1778,8 @@ button {
     padding: .6rem 1rem;
 
     @include respond-below(xs) {
-      padding-left: 0.75rem;
-      padding-right: 0.75rem;
+      padding-#{$start-direction}: 0.75rem;
+      padding-#{$end-direction}: 0.75rem;
     }
   }
 
@@ -1791,7 +1808,7 @@ button {
       width: 40px;
       height: 40px;
       bottom: -8px;
-      right: 3px;
+      #{$end-direction}: 3px;
       text-align: center;
       cursor: pointer;
 
@@ -1812,7 +1829,7 @@ button {
       width: 30px;
       height: 30px;
       background: initial;
-      margin-left: 0.6rem;
+      margin-#{$start-direction}: 0.6rem;
       color: rgba($primary-color, 0.7);
 
       input {
@@ -1824,7 +1841,7 @@ button {
         width: 30px;
         height: 30px;
         bottom: -3px;
-        right: 0;
+        #{$end-direction}: 0;
         color: inherit;
       }
 
@@ -1834,45 +1851,45 @@ button {
         position: fixed;
         z-index: 2;
         background: $foreground-color;
-        left: 0;
+        #{$start-direction}: 0;
         top: 0;
         height: $navbar-height-xs;
-        margin-left: 15px;
+        margin-#{$start-direction}: 15px;
 
         input {
           display: block;
           width: 100%;
           height: 70px;
-          padding-left: 0;
+          padding-#{$start-direction}: 0;
         }
 
         span {
           top: 50%;
           transform: translateY(-50%);
-          right: 25px;
+          #{$end-direction}: 25px;
         }
       }
     }
   }
 
   .header-icons {
-    margin-right: 1rem;
+    margin-#{$end-direction}: 1rem;
 
     @include respond-below(xs) {
-      margin-right: 0;
+      margin-#{$end-direction}: 0;
     }
   }
 
   .header-icon {
     font-size: 16px;
     color: $secondary-color;
-    padding-left: 0.6rem;
-    padding-right: 0.6rem;
+    padding-#{$start-direction}: 0.6rem;
+    padding-#{$end-direction}: 0.6rem;
     vertical-align: initial;
 
     @include respond-below(xs) {
-      padding-left: 0.3rem;
-      padding-right: 0.3rem;
+      padding-#{$start-direction}: 0.3rem;
+      padding-#{$end-direction}: 0.3rem;
     }
 
     &:hover {
@@ -1896,11 +1913,11 @@ button {
         text-align: center;
         font-weight: 700;
         top: 0px;
-        right: 3px;
+        #{$end-direction}: 3px;
         line-height: 14px;
 
         @include respond-below(xs) {
-          right: -1px;
+          #{$end-direction}: -1px;
         }
       }
     }
@@ -1911,7 +1928,7 @@ button {
     position: relative;
 
     img {
-      margin-left: 10px;
+      margin-#{$start-direction}: 10px;
       border-radius: 30px;
       width: 40px;
     }
@@ -1927,14 +1944,14 @@ button {
         width: 30px;
       }
 
-      margin-left: initial;
+      margin-#{$start-direction}: initial;
 
       &:after {
         font-size: 11px;
         width: 14px;
         height: 14px;
         bottom: -3px;
-        right: -3px;
+        #{$end-direction}: -3px;
       }
     }
   }
@@ -1945,7 +1962,10 @@ button {
 
   @include respond-below(lg) {
     height: $navbar-height-md;
-    padding: 1.5rem $main-margin-md 1.5rem 0;
+    padding-top: 1.5rem;
+    padding-#{$end-direction}: $main-margin-md;
+    padding-bottom: 1.5rem;
+    padding-#{$start-direction}: 0;
   }
 
   @include respond-below(sm) {
@@ -1983,8 +2003,8 @@ button {
   height: calc(100% - #{$navbar-height});
 
   .ps-container {
-    margin-right: 0;
-    padding-right: 0;
+    margin-#{$end-direction}: 0;
+    padding-#{$end-direction}: 0;
   }
 
   .main-menu {
@@ -1995,20 +2015,20 @@ button {
     position: fixed;
     transition: transform $menu-collapse-time;
     padding-top: 2px;
-    left: 0;
+    #{$start-direction}: 0;
 
     .scroll {
-      padding-right: unset;
-      margin-right: unset;
+      padding-#{$end-direction}: unset;
+      margin-#{$end-direction}: unset;
       height: 100%;
 
       .ps__scrollbar-y {
-        right: 0 !important;
+        #{$end-direction}: 0 !important;
       }
     }
 
     &.main-hidden {
-      transform: translateX(-$main-menu-width);
+      transform: translateX(-$main-menu-width * $transform-direction);
     }
 
     ul li {
@@ -2058,7 +2078,7 @@ button {
         height: 90px;
         top: 50%;
         transform: translateY(-50%);
-        left: 0;
+        #{$start-direction}: 0;
       }
     }
 
@@ -2097,8 +2117,8 @@ button {
     background: $foreground-color;
     z-index: 2;
     position: fixed;
-    left: $main-menu-width;
-    border-left: 1px solid $separator-color-light;
+    #{$start-direction}: $main-menu-width;
+    border-#{$start-direction}: 1px solid $separator-color-light;
     @include depth(2);
     transition: transform $menu-collapse-time;
     height: calc(100% - #{$navbar-height});
@@ -2106,11 +2126,11 @@ button {
     .scroll {
       height: 100%;
       margin-top: 2px;
-      margin-right: unset;
-      padding-right: unset;
+      margin-#{$end-direction}: unset;
+      padding-#{$end-direction}: unset;
 
       .ps__scrollbar-y {
-        right: 0;
+        #{$end-direction}: 0;
       }
     }
 
@@ -2124,7 +2144,7 @@ button {
 
       li {
         margin-bottom: 10px;
-        margin-left: 30px;
+        margin-#{$start-direction}: 30px;
 
         a {
           font-size: 13px;
@@ -2134,7 +2154,7 @@ button {
 
         i {
           font-size: 1.3em;
-          margin-right: 10px;
+          margin-#{$end-direction}: 10px;
           color: $secondary-color;
           vertical-align: middle;
         }
@@ -2151,25 +2171,25 @@ button {
         }
 
         @include respond-below(sm) {
-          margin-left: 15px;
+          margin-#{$start-direction}: 15px;
         }
       }
     }
 
     @include respond-below(xl) {
-      left: $main-menu-width-lg;
+      #{$start-direction}: $main-menu-width-lg;
       width: $sub-menu-width-lg;
       height: calc(100% - #{$navbar-height-lg});
     }
 
     @include respond-below(lg) {
-      left: $main-menu-width-md;
+      #{$start-direction}: $main-menu-width-md;
       width: $sub-menu-width-md;
       height: calc(100% - #{$navbar-height-md});
     }
 
     @include respond-below(sm) {
-      left: $main-menu-width-xs;
+      #{$start-direction}: $main-menu-width-xs;
       width: $sub-menu-width-xs;
       height: calc(100% - #{$navbar-height-xs});
     }
@@ -2195,63 +2215,63 @@ button {
   &.sub-hidden .sub-menu,
   &.menu-sub-hidden .sub-menu,
   &.menu-hidden .sub-menu {
-    transform: translateX(-$sub-menu-width);
+    transform: translateX(-$sub-menu-width * $transform-direction);
 
     @include respond-below(xl) {
-      transform: translateX(-$sub-menu-width-lg);
+      transform: translateX(-$sub-menu-width-lg * $transform-direction);
     }
 
     @include respond-below(lg) {
-      transform: translateX(-$sub-menu-width-md);
+      transform: translateX(-$sub-menu-width-md * $transform-direction);
     }
 
     @include respond-below(sm) {
-      transform: translateX(-$sub-menu-width-xs);
+      transform: translateX(-$sub-menu-width-xs * $transform-direction);
     }
   }
 
   &.main-hidden .main-menu,
   &.menu-hidden .main-menu {
-    transform: translateX(-$main-menu-width);
+    transform: translateX(-$main-menu-width * $transform-direction);
 
     @include respond-below(xl) {
-      transform: translateX(-$main-menu-width-lg);
+      transform: translateX(-$main-menu-width-lg * $transform-direction);
     }
 
     @include respond-below(lg) {
-      transform: translateX(-$main-menu-width-md);
+      transform: translateX(-$main-menu-width-md * $transform-direction);
     }
 
     @include respond-below(sm) {
-      transform: translateX(-$main-menu-width-xs);
+      transform: translateX(-$main-menu-width-xs * $transform-direction);
     }
   }
 
   &.main-hidden.sub-hidden .sub-menu,
   &.menu-hidden .sub-menu {
-    transform: translateX(-$sub-menu-width - $main-menu-width);
+    transform: translateX((-$sub-menu-width - $main-menu-width) * $transform-direction);
 
     @include respond-below(xl) {
-      transform: translateX(-$sub-menu-width-lg - $main-menu-width-lg);
+      transform: translateX((-$sub-menu-width-lg - $main-menu-width-lg) * $transform-direction);
     }
 
     @include respond-below(lg) {
-      transform: translateX(-$sub-menu-width-md - $main-menu-width-md);
+      transform: translateX((-$sub-menu-width-md - $main-menu-width-md));
     }
 
     @include respond-below(sm) {
-      transform: translateX(-$sub-menu-width-xs - $main-menu-width-xs);
+      transform: translateX((-$sub-menu-width-xs - $main-menu-width-xs) * $transform-direction);
     }
   }
 
   //Mobile
   &.menu-mobile {
     .main-menu {
-      transform: translateX(-$main-menu-width-xs);
+      transform: translateX(-$main-menu-width-xs * $transform-direction);
     }
 
     .sub-menu {
-      transform: translateX(-$sub-menu-width-xs - $main-menu-width-xs - 50);
+      transform: translateX((-$sub-menu-width-xs - $main-menu-width-xs - 50) * $transform-direction);
     }
   }
 
@@ -2262,7 +2282,7 @@ button {
     }
 
     .sub-menu {
-      transform: translateX(-$sub-menu-width);
+      transform: translateX(-$sub-menu-width * $transform-direction);
     }
 
     @include respond-below(xl) {
@@ -2271,7 +2291,7 @@ button {
       }
 
       .sub-menu {
-        transform: translateX(-$sub-menu-width-lg);
+        transform: translateX(-$sub-menu-width-lg * $transform-direction);
       }
     }
 
@@ -2281,13 +2301,13 @@ button {
       }
 
       .sub-menu {
-        transform: translateX(-$sub-menu-width-md);
+        transform: translateX(-$sub-menu-width-md * $transform-direction);
       }
     }
 
     @include respond-below(sm) {
       .sub-menu {
-        transform: translateX(-$sub-menu-width-xs);
+        transform: translateX(-$sub-menu-width-xs * $transform-direction);
       }
     }
   }
@@ -2305,12 +2325,12 @@ button {
   z-index: 1;
   @include depth(1);
   width: $app-menu-width;
-  float: right;
+  float: $end-direction;
   background: $foreground-color;
   transition: transform $menu-collapse-time;
   height: calc(100% - #{$navbar-height});
   position: fixed;
-  right: 0;
+  #{$end-direction}: 0;
   top: $navbar-height;
 
   @include respond-below(xl) {
@@ -2320,7 +2340,7 @@ button {
 
   @include respond-below(lg) {
     top: $navbar-height-md;
-    transform: translateX($app-menu-width);
+    transform: translateX($app-menu-width * $transform-direction);
     height: calc(100% - #{$navbar-height-md});
   }
 
@@ -2330,12 +2350,12 @@ button {
   }
 
   .ps-container {
-    margin-right: unset !important;
-    padding-right: unset !important;
+    margin-#{$end-direction}: unset !important;
+    padding-#{$end-direction}: unset !important;
     height: calc(100% - 45px);
 
     .ps__scrollbar-y-rail {
-      right: 2px !important;
+      #{$end-direction}: 2px !important;
     }
   }
 
@@ -2346,13 +2366,16 @@ button {
   .app-menu-button {
     cursor: pointer;
     position: absolute;
-    left: -28px;
+    #{$start-direction}: -28px;
     background: $foreground-color;
     top: $main-margin - 15;
-    padding: 12px 8px 12px 5px;
+    padding-top: 12px;
+    padding-#{$end-direction}: 8px;
+    padding-bottom: 12px;
+    padding-#{$start-direction}: 5px;
     border-radius: 0.2rem;
     color: $secondary-color !important;
-    box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.04);
+    box-shadow: (-2px * $transform-direction) 0px 5px rgba(0, 0, 0, 0.04);
     font-size: 15px;
     line-height: 0;
 
@@ -2385,7 +2408,7 @@ button {
 
       i {
         font-size: 1.2em;
-        margin-right: 10px;
+        margin-#{$end-direction}: 10px;
         color: $secondary-color;
         vertical-align: unset;
 
@@ -2403,20 +2426,20 @@ button {
 }
 
 .app-row {
-  padding-right: $app-menu-width;
+  padding-#{$end-direction}: $app-menu-width;
 
   @include respond-below(lg) {
-    padding-right: 0;
+    padding-#{$end-direction}: 0;
   }
 }
 
 /* 12.Chat App*/
 .chat-app {
   .ps-container {
-    padding-left: 10px;
-    margin-left: -10px;
-    padding-right: 10px;
-    margin-right: 0;
+    padding-#{$start-direction}: 10px;
+    margin-#{$start-direction}: -10px;
+    padding-#{$end-direction}: 10px;
+    margin-#{$end-direction}: 0;
     height: calc(100vh - #{$navbar-height} - 270px);
 
     @include respond-below(xl) {
@@ -2432,16 +2455,16 @@ button {
     }
 
     .ps__scrollbar-y {
-      right: 10px !important;
+      #{$end-direction}: 10px !important;
     }
   }
 
-  .chat-text-left {
-    padding-left: 64px;
+  .chat-text-#{$start-direction} {
+    padding-#{$start-direction}: 64px;
   }
 
-  .chat-text-right {
-    padding-right: 64px;
+  .chat-text-#{$end-direction} {
+    padding-#{$end-direction}: 64px;
   }
 
   .list-item-heading {
@@ -2467,40 +2490,40 @@ button {
   height: 90px;
   background: $input-background;
   position: fixed;
-  left: 0;
-  right: 0;
+  #{$start-direction}: 0;
+  #{$end-direction}: 0;
   bottom: 0;
   @include depth(1);
-  padding-left: $main-menu-width + $sub-menu-width + $main-margin;
-  padding-right: $app-menu-width + $main-margin;
+  padding-#{$start-direction}: $main-menu-width + $sub-menu-width + $main-margin;
+  padding-#{$end-direction}: $app-menu-width + $main-margin;
 
   @include respond-below(xl) {
-    padding-left: $main-menu-width-lg + $main-margin-lg;
-    padding-right: $app-menu-width + $main-margin-lg;
+    padding-#{$start-direction}: $main-menu-width-lg + $main-margin-lg;
+    padding-#{$end-direction}: $app-menu-width + $main-margin-lg;
   }
 
   @include respond-below(lg) {
-    padding-left: $main-menu-width-md + $main-margin-md;
-    padding-right: $main-margin-md;
+    padding-#{$start-direction}: $main-menu-width-md + $main-margin-md;
+    padding-#{$end-direction}: $main-margin-md;
   }
 
   @include respond-below(sm) {
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-#{$end-direction}: 15px;
+    padding-#{$start-direction}: 15px;
   }
 
   input {
     border: initial;
     width: unset;
     height: 90px;
-    padding-left: 0;
+    padding-#{$start-direction}: 0;
     display: inline-block;
   }
 
   .send-button {
     @include respond-below(md) {
-      padding-left: 0.7rem;
-      padding-right: 0.7rem;
+      padding-#{$start-direction}: 0.7rem;
+      padding-#{$end-direction}: 0.7rem;
     }
   }
 }
@@ -2511,12 +2534,12 @@ button {
     .badge {
       color: $secondary-color;
       font-size: 13px;
-      padding-left: 0.75em;
-      padding-right: 0.75em;
+      padding-#{$start-direction}: 0.75em;
+      padding-#{$end-direction}: 0.75em;
     }
 
     input {
-      padding-right: 70px;
+      padding-#{$end-direction}: 70px;
     }
   }
 
@@ -2572,7 +2595,7 @@ button {
 
 .input-icons {
   position: absolute;
-  right: 0;
+  #{$end-direction}: 0;
   top: 9px;
 }
 
@@ -2580,21 +2603,21 @@ button {
 .heading-icon {
   font-size: 20px;
   color: $theme-color-1;
-  margin-right: 5px;
+  margin-#{$end-direction}: 5px;
   line-height: inherit;
   vertical-align: middle;
 }
 
 .todo-details {
   margin-top: 20px;
-  margin-left: 40px;
+  margin-#{$start-direction}: 40px;
 }
 
 .heading-number {
   border: 1px solid $theme-color-1;
   padding: 4px;
   vertical-align: middle;
-  margin-right: 10px;
+  margin-#{$end-direction}: 10px;
   border-radius: 20px;
   width: 34px;
   height: 34px;
@@ -2604,42 +2627,42 @@ button {
 
 /* 15.Main*/
 main {
-  margin-left: $sub-menu-width + $main-menu-width + $main-margin;
+  margin-#{$start-direction}: $sub-menu-width + $main-menu-width + $main-margin;
   margin-top: $navbar-height + $main-margin - 15;
-  margin-right: $main-margin;
+  margin-#{$end-direction}: $main-margin;
   margin-bottom: $main-margin - 20;
-  transition: margin-left $menu-collapse-time;
+  transition: margin-#{$start-direction} $menu-collapse-time;
 
   &.sub-hidden {
-    margin-left: $main-menu-width + $main-margin;
+    margin-#{$start-direction}: $main-menu-width + $main-margin;
   }
 
   &.main-hidden {
-    margin-left: $main-margin;
+    margin-#{$start-direction}: $main-margin;
   }
 
   .container-fluid {
-    padding-left: 0;
-    padding-right: 0;
+    padding-#{$start-direction}: 0;
+    padding-#{$end-direction}: 0;
   }
 
   @include respond-below(xl) {
-    margin-left: $sub-menu-width-lg + $main-menu-width-lg + $main-margin-lg;
-    margin-right: $main-margin-lg;
+    margin-#{$start-direction}: $sub-menu-width-lg + $main-menu-width-lg + $main-margin-lg;
+    margin-#{$end-direction}: $main-margin-lg;
     margin-top: $main-margin-lg + $navbar-height-lg -10;
     margin-bottom: 30px;
   }
 
   @include respond-below(lg) {
-    margin-left: $sub-menu-width-md + $main-menu-width-md + $main-margin-md;
-    margin-right: $main-margin-md;
+    margin-#{$start-direction}: $sub-menu-width-md + $main-menu-width-md + $main-margin-md;
+    margin-#{$end-direction}: $main-margin-md;
     margin-top: $main-margin-md + $navbar-height-md -10;
     margin-bottom: 20px;
   }
 
   @include respond-below(sm) {
-    margin-left: $main-margin-xs !important;
-    margin-right: $main-margin-xs !important;
+    margin-#{$start-direction}: $main-margin-xs !important;
+    margin-#{$end-direction}: $main-margin-xs !important;
     margin-top: $main-margin-xs + $navbar-height-xs !important;
     margin-bottom: 0;
   }
@@ -2655,12 +2678,12 @@ main {
   &.sub-hidden main,
   &.menu-sub-hidden main,
   &.menu-hidden main {
-    margin-left: $main-menu-width + $main-margin;
+    margin-#{$start-direction}: $main-menu-width + $main-margin;
   }
 
   &.main-hidden main,
   &.menu-hidden main {
-    margin-left: $main-margin;
+    margin-#{$start-direction}: $main-margin;
   }
 
   @include respond-below(xl) {
@@ -2668,12 +2691,12 @@ main {
     &.sub-hidden main,
     &.menu-sub-hidden main,
     &.menu-hidden main {
-      margin-left: $main-menu-width-lg + $main-margin-lg;
+      margin-#{$start-direction}: $main-menu-width-lg + $main-margin-lg;
     }
 
     &.main-hidden main,
     &.menu-hidden main {
-      margin-left: $main-margin-lg;
+      margin-#{$start-direction}: $main-margin-lg;
     }
   }
 
@@ -2682,12 +2705,12 @@ main {
     &.sub-hidden main,
     &.menu-sub-hidden main,
     &.menu-hidden main {
-      margin-left: $main-menu-width-md + $main-margin-md;
+      margin-#{$start-direction}: $main-menu-width-md + $main-margin-md;
     }
 
     &.main-hidden main,
     &.menu-hidden main {
-      margin-left: $main-margin-md;
+      margin-#{$start-direction}: $main-margin-md;
     }
   }
 }
@@ -2698,7 +2721,7 @@ main {
   background: $foreground-color;
 
   .card-header .card-icon {
-    right: 5px;
+    #{$end-direction}: 5px;
     top: 5px;
 
     i {
@@ -2754,28 +2777,28 @@ main {
 
 .card-img-bottom {
   width: 100%;
-  border-bottom-left-radius: calc(0.15rem - 1px);
-  border-bottom-right-radius: calc(0.15rem - 1px);
+  border-bottom-#{$start-direction}-radius: calc(0.15rem - 1px);
+  border-bottom-#{$end-direction}-radius: calc(0.15rem - 1px);
 }
 
 .card-img-top {
   width: 100%;
-  border-top-left-radius: calc(0.15rem - 1px);
-  border-top-right-radius: calc(0.15rem - 1px);
+  border-top-#{$start-direction}-radius: calc(0.15rem - 1px);
+  border-top-#{$end-direction}-radius: calc(0.15rem - 1px);
 }
 
-.card-img-left {
+.card-img-#{$start-direction} {
   width: 100%;
-  border-top-left-radius: calc(0.15rem - 1px);
-  border-bottom-left-radius: calc(0.15rem - 1px);
+  border-top-#{$start-direction}-radius: calc(0.15rem - 1px);
+  border-bottom-#{$start-direction}-radius: calc(0.15rem - 1px);
   height: 100%;
   object-fit: cover;
 }
 
-.card-img-right {
+.card-img-#{$end-direction} {
   width: 100%;
-  border-top-right-radius: calc(0.15rem - 1px);
-  border-bottom-right-radius: calc(0.15rem - 1px);
+  border-top-#{$end-direction}-radius: calc(0.15rem - 1px);
+  border-bottom-#{$end-direction}-radius: calc(0.15rem - 1px);
   height: 100%;
   object-fit: cover;
 }
@@ -2791,7 +2814,7 @@ main {
 
 .card-top-buttons {
   padding: 1.3rem;
-  right: 0;
+  #{$end-direction}: 0;
   top: 0;
 
   @include respond-below(xs) {
@@ -2868,8 +2891,8 @@ main {
 
 .dashboard-sq-banner {
   // background: url(/img/sq-banner.jpg);
-  // background-image: linear-gradient(to right bottom, $theme-color-1, $theme-color-2);
-  background-image: linear-gradient(to right top,
+  // background-image: linear-gradient(to #{$end-direction} bottom, $theme-color-1, $theme-color-2);
+  background-image: linear-gradient(to #{$end-direction} top,
     $gradient-color-2,
     $gradient-color-3,
     $gradient-color-1);
@@ -2888,7 +2911,7 @@ main {
   }
 
   &:hover {
-    background-position: right top;
+    background-position: #{$end-direction} top;
   }
 }
 
@@ -2908,8 +2931,8 @@ main {
   }
 
   .swiper-container {
-    margin-right: -0.5rem;
-    margin-left: -0.5rem;
+    margin-#{$end-direction}: -0.5rem;
+    margin-#{$start-direction}: -0.5rem;
 
     img {
       height: 120px;
@@ -2933,10 +2956,16 @@ main {
   background-color: $foreground-color;
 
   .card-body {
-    padding: 120px 50px 30px 50px;
+    padding-top: 120px;
+    padding-#{$end-direction}: 50px;
+    padding-bottom: 30px;
+    padding-#{$start-direction}: 50px;
 
     @include respond-below(xl) {
-      padding: 80px 30px 30px 30px;
+      padding-top: 80px;
+      padding-#{$end-direction}: 30px;
+      padding-bottom: 30px;
+      padding-#{$start-direction}: 30px;
     }
   }
 
@@ -2950,8 +2979,8 @@ main {
 }
 
 .icon-cards-row {
-  margin-left: -5px;
-  margin-right: -5px;
+  margin-#{$start-direction}: -5px;
+  margin-#{$end-direction}: -5px;
   margin-top: -10px;
 
   .swiper-container {
@@ -2959,14 +2988,14 @@ main {
     padding-top: 10px;
 
     .icon-row-item {
-      padding-left: 5px;
-      padding-right: 5px;
+      padding-#{$start-direction}: 5px;
+      padding-#{$end-direction}: 5px;
     }
   }
 
   [class*="col-"] {
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-#{$start-direction}: 5px;
+    padding-#{$end-direction}: 5px;
   }
 
   .card-body {
@@ -3048,7 +3077,7 @@ main {
     border: none;
 
     .cv-header-nav {
-      float: right;
+      float: $end-direction;
       position: relative;
 
       button {
@@ -3110,27 +3139,27 @@ main {
       }
 
       .previousPeriod {
-        margin-right: 5px;
+        margin-#{$end-direction}: 5px;
         text-indent: -10px;
         overflow: hidden;
         font-family: "simple-line-icons";
-        padding-right: 6px;
+        padding-#{$end-direction}: 6px;
 
         &::after {
-          padding-left: 7px;
+          padding-#{$start-direction}: 7px;
           content: "\e605";
         }
       }
 
       .nextPeriod {
-        margin-left: 5px;
+        margin-#{$start-direction}: 5px;
         text-indent: -10px;
         overflow: hidden;
         font-family: "simple-line-icons";
-        padding-right: 6px;
+        padding-#{$end-direction}: 6px;
 
         &::after {
-          padding-left: 10px;
+          padding-#{$start-direction}: 10px;
           content: "\e606";
         }
       }
@@ -3138,7 +3167,7 @@ main {
     }
 
     .periodLabel {
-      float: left;
+      float: $start-direction;
       padding: inherit;
       font-size: inherit;
     }
@@ -3163,12 +3192,12 @@ main {
       box-sizing: inherit;
 
       border-bottom: 1px solid $separator-color-light !important;
-      border-right: 1px solid $separator-color-light !important;
+      border-#{$end-direction}: 1px solid $separator-color-light !important;
 
     }
 
     :last-child {
-      border-right: inherit !important;
+      border-#{$end-direction}: inherit !important;
     }
   }
 
@@ -3176,7 +3205,7 @@ main {
     .cv-week {
       .cv-day {
         border-bottom: 1px solid $separator-color-light !important;
-        border-left: 1px solid $separator-color-light !important;
+        border-#{$start-direction}: 1px solid $separator-color-light !important;
 
         &.today {
           .cv-day-number {
@@ -3204,7 +3233,7 @@ main {
       }
 
       :first-child {
-        border-left: initial !important;
+        border-#{$start-direction}: initial !important;
       }
 
       .cv-day-number {
@@ -3222,15 +3251,15 @@ main {
         margin-top: 17px;
 
         &.toBeContinued {
-          border-right-style: none !important;
-          border-top-right-radius: 0 !important;
-          border-bottom-right-radius: 0 !important;
+          border-#{$end-direction}-style: none !important;
+          border-top-#{$end-direction}-radius: 0 !important;
+          border-bottom-#{$end-direction}-radius: 0 !important;
         }
 
         &.continued {
-          border-left-style: none !important;
-          border-top-left-radius: 0 !important;
-          border-bottom-left-radius: 0 !important;
+          border-#{$start-direction}-style: none !important;
+          border-top-#{$start-direction}-radius: 0 !important;
+          border-bottom-#{$start-direction}-radius: 0 !important;
         }
 
         &.continued:before,
@@ -3295,7 +3324,7 @@ main {
     th {
       box-shadow: initial;
       border: initial;
-      text-align: left;
+      text-align: $start-direction;
       font-weight: 700;
 
       &.sorted-asc {
@@ -3409,7 +3438,7 @@ div[data-notify="container"] {
   box-sizing: border-box;
   position: fixed;
   top: 0;
-  right: 0;
+  #{$end-direction}: 0;
   z-index: 999999;
   width: 320px;
   padding: 0px 15px;
@@ -3420,7 +3449,10 @@ div[data-notify="container"] {
 
 .notification {
   box-sizing: border-box;
-  padding: 15px 15px 15px 58px;
+  padding-top: 15px;
+  padding-#{$end-direction}: 15px;
+  padding-bottom: 15px;
+  padding-#{$start-direction}: 58px;
   border-radius: 2px;
   cursor: pointer;
   font-size: 1em;
@@ -3434,7 +3466,10 @@ div[data-notify="container"] {
   font-size: 1em;
   line-height: 1.2em;
   font-weight: bold;
-  margin: 0 0 5px 0;
+  margin-top: 0;
+  margin-#{$end-direction}: 0;
+  margin-bottom: 0;
+  margin-#{$start-direction}: 5px;
 }
 
 .notification:hover,
@@ -3444,7 +3479,7 @@ div[data-notify="container"] {
 
 .notification-enter {
   visibility: hidden;
-  transform: translate3d(100%, 0, 0);
+  transform: translate3d(100% * $transform-direction, 0, 0);
 }
 
 .notification-enter.notification-enter-active {
@@ -3460,7 +3495,7 @@ div[data-notify="container"] {
 
 .notification-leave.notification-leave-active {
   visibility: hidden;
-  transform: translate3d(100%, 0, 0);
+  transform: translate3d(100% * $transform-direction, 0, 0);
   transition: all 0.4s;
 }
 
@@ -3480,20 +3515,20 @@ div[data-notify="container"] {
   position: absolute;
   z-index: 1;
   margin-top: -0.2rem;
-  left: 50%;
+  #{$start-direction}: 50%;
   transform: translateX(-50%);
 
   &:after {
     content: "";
     position: absolute;
     top: -5px;
-    left: -2.5px;
-    margin-left: 50%;
+    #{$start-direction}: -2.5px;
+    margin-#{$start-direction}: 50%;
     width: 10px;
     height: 5px;
     border-bottom: solid 5px $error-color;
-    border-left: solid 5px transparent;
-    border-right: solid 5px transparent;
+    border-#{$start-direction}: solid 5px transparent;
+    border-#{$end-direction}: solid 5px transparent;
   }
 }
 
@@ -3535,8 +3570,8 @@ div[data-notify="container"] {
 
 .vue-tagsinput .vue-tagsinput-tag {
   padding: 0px 10px !important;
-  margin-left: 5px;
-  margin-right: 0px;
+  margin-#{$start-direction}: 5px;
+  margin-#{$end-direction}: 0px;
 }
 
 .v-select.single .selected-tag {
@@ -3553,7 +3588,7 @@ div[data-notify="container"] {
   cursor: pointer;
   font-weight: 700 !important;
   font-size: inherit !important;
-  margin-left: 3px;
+  margin-#{$start-direction}: 3px;
   color: $foreground-color !important;
   opacity: 1 !important;
 }
@@ -3606,7 +3641,7 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .custom-control-input {
-  left: 1px;
+  #{$start-direction}: 1px;
   top: 3px;
   opacity: 0;
   z-index: 1;
@@ -3676,8 +3711,8 @@ select.form-control:not([size]):not([multiple]) {
 .invalid-tooltip {
   border-radius: 15px;
   padding: 0.5rem 1rem;
-  left: 50%;
-  transform: translateX(-50%);
+  #{$start-direction}: 50%;
+  transform: translateX(-50% * $transform-direction);
   font-size: 0.76rem;
 }
 
@@ -3695,26 +3730,26 @@ select.form-control:not([size]):not([multiple]) {
   content: "";
   position: absolute;
   top: -5px;
-  left: -2.5px;
-  margin-left: 50%;
+  #{$start-direction}: -2.5px;
+  margin-#{$start-direction}: 50%;
   width: 10px;
   height: 5px;
   border-bottom: solid 5px rgba(40, 167, 69, 1);
-  border-left: solid 5px transparent;
-  border-right: solid 5px transparent;
+  border-#{$start-direction}: solid 5px transparent;
+  border-#{$end-direction}: solid 5px transparent;
 }
 
 .invalid-tooltip:after {
   content: "";
   position: absolute;
   top: -5px;
-  left: -2.5px;
-  margin-left: 50%;
+  #{$start-direction}: -2.5px;
+  margin-#{$start-direction}: 50%;
   width: 10px;
   height: 5px;
   border-bottom: solid 5px rgba(220, 53, 69, 1);
-  border-left: solid 5px transparent;
-  border-right: solid 5px transparent;
+  border-#{$start-direction}: solid 5px transparent;
+  border-#{$end-direction}: solid 5px transparent;
 }
 
 .valid-icon {
@@ -3728,7 +3763,7 @@ select.form-control:not([size]):not([multiple]) {
   font-size: 0.76rem;
   line-height: 1;
   border-radius: 0.2rem;
-  right: 4px;
+  #{$end-direction}: 4px;
   color: $success-color;
 }
 
@@ -3743,7 +3778,7 @@ select.form-control:not([size]):not([multiple]) {
   font-size: 0.875rem;
   line-height: 1;
   border-radius: 0.2rem;
-  right: 4px;
+  #{$end-direction}: 4px;
   color: $error-color;
 }
 
@@ -3824,7 +3859,10 @@ select.form-control:not([size]):not([multiple]) {
 .vs__selected-options {
   outline: initial !important;
   box-shadow: none !important;
-  padding: 0.45rem 0.75rem 0.4rem 0.4rem !important;
+  padding-top: 0.45rem !important;
+  padding-#{$end-direction}: 0.75rem !important;
+  padding-bottom: 0.4rem !important;
+  padding-#{$start-direction}: 0.4rem !important;
   // height: calc(2.4rem + 3px) !important;
   background: $foreground-color !important;
 }
@@ -4022,7 +4060,7 @@ select.form-control:not([size]):not([multiple]) {
   .preview-container {
     transition: initial !important;
     animation: initial !important;
-    margin-left: 0;
+    margin-#{$start-direction}: 0;
     margin-top: 0;
     position: relative;
     width: 100%;
@@ -4031,9 +4069,9 @@ select.form-control:not([size]):not([multiple]) {
       color: $theme-color-1;
       font-size: 20px;
       position: absolute;
-      left: 50%;
+      #{$start-direction}: 50%;
       top: 29px;
-      transform: translateX(-50%) translateY(-50%) !important;
+      transform: translateX(-50% * $transform-direction) translateY(-50%) !important;
       height: 22px;
     }
   }
@@ -4044,7 +4082,7 @@ select.form-control:not([size]):not([multiple]) {
 
   .remove {
     position: absolute;
-    right: 5px;
+    #{$end-direction}: 5px;
     top: 5px;
     color: $theme-color-1;
   }
@@ -4053,7 +4091,7 @@ select.form-control:not([size]):not([multiple]) {
     position: static;
     display: block;
     opacity: 1;
-    text-align: left;
+    text-align: $start-direction;
     min-width: unset;
     z-index: initial;
     color: $primary-color;
@@ -4062,8 +4100,8 @@ select.form-control:not([size]):not([multiple]) {
   .dz-error-mark {
     color: $button-text-color;
     top: 15px;
-    left: 25px;
-    margin-left: 0;
+    #{$start-direction}: 25px;
+    margin-#{$start-direction}: 0;
     margin-top: 0;
 
     span {
@@ -4077,8 +4115,8 @@ select.form-control:not([size]):not([multiple]) {
   .dz-success-mark {
     color: $button-text-color;
     top: 15px;
-    left: 25px;
-    margin-left: 0;
+    #{$start-direction}: 25px;
+    margin-#{$start-direction}: 0;
     margin-top: 0;
 
     span {
@@ -4091,11 +4129,11 @@ select.form-control:not([size]):not([multiple]) {
 
   .dz-progress {
     width: 84%;
-    margin-left: 0;
+    margin-#{$start-direction}: 0;
     margin-top: 0;
-    right: 0;
+    #{$end-direction}: 0;
     height: 5px !important;
-    left: 15px;
+    #{$start-direction}: 15px;
     .dz-upload {
       width: 100%;
       background: $theme-color-1;
@@ -4240,18 +4278,18 @@ select.form-control:not([size]):not([multiple]) {
     width: 18px;
     height: 18px;
     top: 3px;
-    margin-left: 3px;
+    margin-#{$start-direction}: 3px;
     box-shadow: initial;
     transform: initial !important;
     animation-name: unset !important;
     background: $foreground-color;
-    left: 30px;
+    #{$start-direction}: 30px;
   }
 
 }
 
 .vue-switcher.vue-switcher--unchecked div:after {
-  left: 0px;
+  #{$start-direction}: 0px;
 }
 
 
@@ -4358,7 +4396,10 @@ select.form-control:not([size]):not([multiple]) {
   border-color: $separator-color;
   color: $primary-color;
   font-size: 0.8rem;
-  padding: 0.75rem 0.75rem 0.5rem 0.75rem;
+  padding-top: 0.75rem;
+  padding-#{$end-direction}: 0.75rem;
+  padding-bottom: 0.5rem;
+  padding-#{$start-direction}: 0.75rem;
 }
 
 .form-control {
@@ -4367,7 +4408,10 @@ select.form-control:not([size]):not([multiple]) {
   box-shadow: initial !important;
   font-size: 0.8rem;
   // padding: 0.75rem 0.75rem 0.5rem 0.75rem;
-  padding: 0.7rem 0.75rem 0.65rem 0.75rem;
+  padding-top: 0.7rem;
+  padding-#{$end-direction}: 0.75rem;
+  padding-bottom: 0.65rem;
+  padding-#{$start-direction}: 0.75rem;
   line-height: 1.5;
   border: 1px solid $separator-color;
   background: $input-background;
@@ -4410,7 +4454,10 @@ input:-webkit-autofill {
 
 .custom-select {
   border-radius: $border-radius;
-  padding: 0.75rem 0.75rem 0.5rem 0.75rem;
+  padding-top: 0.75rem;
+  padding-#{$end-direction}: 0.75rem;
+  padding-bottom: 0.5rem;
+  padding-#{$start-direction}: 0.75rem;
 }
 
 .input-group>.form-control:not(:first-child),
@@ -4450,7 +4497,10 @@ input:-webkit-autofill {
   box-shadow: initial !important;
   border-radius: $border-radius;
   height: calc(2.5rem + 2px);
-  padding: 0.75rem 0.75rem 0.5rem 0.75rem;
+  padding-top: 0.75rem;
+  padding-#{$end-direction}: 0.75rem;
+  padding-bottom: 0.5rem;
+  padding-#{$start-direction}: 0.75rem;
 }
 
 .custom-file {
@@ -4464,7 +4514,10 @@ input:-webkit-autofill {
 
 .custom-file-label::after {
   height: calc(calc(2.5rem + 2px) - 1px * 2);
-  padding: 0.75rem 0.75rem 0.5rem 0.75rem;
+  padding-top: 0.75rem;
+  padding-#{$end-direction}: 0.75rem;
+  padding-bottom: 0.5rem;
+  padding-#{$start-direction}: 0.75rem;
 }
 
 .jumbotron {
@@ -4493,12 +4546,12 @@ input:-webkit-autofill {
   top: 150% !important;
   bottom: unset !important;
   padding: 5px !important;
-  transform: translateX(-50%) !important;
+  transform: translateX(-50% * $transform-direction) !important;
 }
 
 .vue-slider-component .vue-slider-dot.vue-slider-always .vue-slider-tooltip-wrap {
   margin-top: 5px;
-  margin-left: 10px;
+  margin-#{$start-direction}: 10px;
 }
 
 .vue-slider-component.vue-slider-horizontal .vue-slider-dot {
@@ -4716,24 +4769,24 @@ input:-webkit-autofill {
   opacity: 1;
 }
 
-.bs-popover-right .arrow::before,
-.bs-popover-auto[x-placement^="right"] .arrow::before {
-  border-right-color: $separator-color;
+.bs-popover-#{$end-direction} .arrow::before,
+.bs-popover-auto[x-placement^="#{$end-direction}"] .arrow::before {
+  border-#{$end-direction}-color: $separator-color;
 }
 
-.bs-popover-right .arrow::after,
-.bs-popover-auto[x-placement^="right"] .arrow::after {
-  border-right-color: $foreground-color;
+.bs-popover-#{$end-direction} .arrow::after,
+.bs-popover-auto[x-placement^="#{$end-direction}"] .arrow::after {
+  border-#{$end-direction}-color: $foreground-color;
 }
 
-.bs-popover-left .arrow::before,
-.bs-popover-auto[x-placement^="left"] .arrow::before {
-  border-left-color: $separator-color;
+.bs-popover-#{$start-direction} .arrow::before,
+.bs-popover-auto[x-placement^="#{$start-direction}"] .arrow::before {
+  border-#{$start-direction}-color: $separator-color;
 }
 
-.bs-popover-left .arrow::after,
-.bs-popover-auto[x-placement^="left"] .arrow::after {
-  border-left-color: $foreground-color;
+.bs-popover-#{$start-direction} .arrow::after,
+.bs-popover-auto[x-placement^="#{$start-direction}"] .arrow::after {
+  border-#{$start-direction}-color: $foreground-color;
 }
 
 .bs-popover-bottom .arrow::before,
@@ -4765,29 +4818,29 @@ input:-webkit-autofill {
   border-style: solid;
 }
 
-.bs-tooltip-right .arrow::before,
-.bs-tooltip-auto[x-placement^="right"] .arrow::before,
-.bs-tooltip-right .arrow::after,
-.bs-tooltip-auto[x-placement^="right"] .arrow::after {
+.bs-tooltip-#{$end-direction} .arrow::before,
+.bs-tooltip-auto[x-placement^="#{$end-direction}"] .arrow::before,
+.bs-tooltip-#{$end-direction} .arrow::after,
+.bs-tooltip-auto[x-placement^="#{$end-direction}"] .arrow::after {
   border-width: 0.5rem 0.5rem 0.5rem 0;
 }
 
-.bs-tooltip-right .arrow::before,
-.bs-tooltip-auto[x-placement^="right"] .arrow::before {
-  left: 0;
-  border-right-color: $separator-color;
+.bs-tooltip-#{$end-direction} .arrow::before,
+.bs-tooltip-auto[x-placement^="#{$end-direction}"] .arrow::before {
+  #{$start-direction}: 0;
+  border-#{$end-direction}-color: $separator-color;
 }
 
-.bs-tooltip-right .arrow::after,
-.bs-tooltip-auto[x-placement^="right"] .arrow::after {
-  left: 1px;
-  border-right-color: $foreground-color;
+.bs-tooltip-#{$end-direction} .arrow::after,
+.bs-tooltip-auto[x-placement^="#{$end-direction}"] .arrow::after {
+  #{$start-direction}: 1px;
+  border-#{$end-direction}-color: $foreground-color;
 }
 
-.bs-tooltip-right .arrow::before,
-.bs-tooltip-auto[x-placement^="right"] .arrow::before,
-.bs-tooltip-right .arrow::after,
-.bs-tooltip-auto[x-placement^="right"] .arrow::after {
+.bs-tooltip-#{$end-direction} .arrow::before,
+.bs-tooltip-auto[x-placement^="#{$end-direction}"] .arrow::before,
+.bs-tooltip-#{$end-direction} .arrow::after,
+.bs-tooltip-auto[x-placement^="#{$end-direction}"] .arrow::after {
   border-width: 0.4rem 0.4rem 0.4rem 0;
 }
 
@@ -4843,30 +4896,30 @@ input:-webkit-autofill {
   border-bottom-color: $foreground-color;
 }
 
-.bs-tooltip-left .arrow::before,
-.bs-tooltip-auto[x-placement^="left"] .arrow::before,
-.bs-tooltip-left .arrow::after,
-.bs-tooltip-auto[x-placement^="left"] .arrow::after {
+.bs-tooltip-#{$start-direction} .arrow::before,
+.bs-tooltip-auto[x-placement^="#{$start-direction}"] .arrow::before,
+.bs-tooltip-#{$start-direction} .arrow::after,
+.bs-tooltip-auto[x-placement^="#{$start-direction}"] .arrow::after {
   border-width: 0.5rem 0 0.5rem 0.5rem;
 }
 
-.bs-tooltip-left .arrow::before,
-.bs-tooltip-auto[x-placement^="left"] .arrow::before {
-  right: 0;
-  border-left-color: $separator-color;
+.bs-tooltip-#{$start-direction} .arrow::before,
+.bs-tooltip-auto[x-placement^="#{$start-direction}"] .arrow::before {
+  #{$end-direction}: 0;
+  border-#{$start-direction}-color: $separator-color;
 }
 
-.bs-tooltip-left .arrow::before,
-.bs-tooltip-auto[x-placement^="left"] .arrow::before,
-.bs-tooltip-left .arrow::after,
-.bs-tooltip-auto[x-placement^="left"] .arrow::after {
+.bs-tooltip-#{$start-direction} .arrow::before,
+.bs-tooltip-auto[x-placement^="#{$start-direction}"] .arrow::before,
+.bs-tooltip-#{$start-direction} .arrow::after,
+.bs-tooltip-auto[x-placement^="#{$start-direction}"] .arrow::after {
   border-width: 0.5rem 0 0.5rem 0.5rem;
 }
 
-.bs-tooltip-left .arrow::after,
-.bs-tooltip-auto[x-placement^="left"] .arrow::after {
-  right: 0;
-  border-left-color: $foreground-color;
+.bs-tooltip-#{$start-direction} .arrow::after,
+.bs-tooltip-auto[x-placement^="#{$start-direction}"] .arrow::after {
+  #{$end-direction}: 0;
+  border-#{$start-direction}-color: $foreground-color;
 }
 
 .search-sm {
@@ -4877,7 +4930,10 @@ input:-webkit-autofill {
     outline: initial !important;
     border: 1px solid $secondary-color;
     border-radius: 15px;
-    padding: 0.25rem 0.75rem 0.25rem 0.75rem;
+    padding-top: 0.25rem;
+    padding-#{$end-direction}: 0.75rem;
+    padding-bottom: 0.25rem;
+    padding-#{$start-direction}: 0.75rem;
     font-size: 0.76rem;
     line-height: 1.3;
     color: $primary-color;
@@ -4891,7 +4947,7 @@ input:-webkit-autofill {
     color: $secondary-color;
     position: absolute;
     width: 25px;
-    right: 2px;
+    #{$end-direction}: 2px;
     text-align: center;
     cursor: pointer;
     top: 2px;
@@ -4901,7 +4957,10 @@ input:-webkit-autofill {
 .notification {
   border-radius: $border-radius;
   @include depth(1);
-  padding: 25px 25px 25px 25px;
+  padding-top: 0.25rem;
+  padding-#{$end-direction}: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-#{$start-direction}: 0.25rem;
 }
 
 .notification:before {
@@ -5113,7 +5172,7 @@ input:-webkit-autofill {
 
 .progress-banner {
   height: 200px;
-  background-image: linear-gradient(to right top,
+  background-image: linear-gradient(to #{$end-direction} top,
     $gradient-color-2,
     $gradient-color-3,
     $gradient-color-1);
@@ -5170,7 +5229,7 @@ input:-webkit-autofill {
   }
 
   &:hover {
-    background-position: right top;
+    background-position: #{$end-direction} top;
   }
 }
 
@@ -5219,7 +5278,7 @@ input:-webkit-autofill {
   line-height: 1;
   font-family: "simple-line-icons";
   color: $separator-color;
-  padding-right: 3px;
+  padding-#{$end-direction}: 3px;
   font-size: 18px;
 
   &.is-active,
@@ -5355,12 +5414,12 @@ input:-webkit-autofill {
   @include depth(2);
 }
 
-.modal-right {
-  padding-right: 0 !important;
+.modal-#{$end-direction} {
+  padding-#{$end-direction}: 0 !important;
 
   .modal-dialog {
     margin: 0 auto;
-    margin-right: 0;
+    margin-#{$end-direction}: 0;
     margin-top: 0;
     margin-bottom: 0;
     height: 100%;
@@ -5392,7 +5451,7 @@ input:-webkit-autofill {
   }
 
   .modal.fade .modal-dialog {
-    transform: translate(25%, 0) !important;
+    transform: translate(25% * $transform-direction, 0) !important;
   }
 
   .modal.show .modal-dialog {
@@ -5600,7 +5659,7 @@ input:-webkit-autofill {
 }
 
 .RichEditor-editor .RichEditor-blockquote {
-  border-left: 5px solid $separator-color;
+  border-#{$start-direction}: 5px solid $separator-color;
   color: $secondary-color;
   font-family: "Hoefler Text", "Georgia", serif;
   font-style: italic;
@@ -5625,7 +5684,7 @@ input:-webkit-autofill {
 .RichEditor-styleButton {
   color: $separator-color;
   cursor: pointer;
-  margin-right: 16px;
+  margin-#{$end-direction}: 16px;
   padding: 2px 0;
   display: inline-block;
   color: $primary-color;
@@ -5649,7 +5708,7 @@ input:-webkit-autofill {
 .mind-icons .glyph {
   width: 14.28%;
   text-align: center;
-  float: left;
+  float: $start-direction;
   height: 100px;
 
   .glyph-icon,
@@ -5692,22 +5751,25 @@ input:-webkit-autofill {
   position: fixed;
   z-index: 1030;
   top: 50%;
-  right: 0;
+  #{$end-direction}: 0;
   background: $foreground-color;
   @include depth(1);
-  transform: translate(280px, -50%);
+  transform: translate(280px * $transform-direction, -50%);
   transition: transform 0.4s ease-out;
   padding-top: 10px;
   padding-bottom: 10px;
 
   .theme-button {
     position: absolute;
-    left: -34px;
+    #{$start-direction}: -34px;
     background: $foreground-color;
-    padding: 13px 7px 13px 7px;
+    padding-top: 13px;
+    padding-#{$end-direction}: 7px;
+    padding-bottom: 13px;
+    padding-#{$start-direction}: 7px;
     border-radius: 0.2rem;
     color: $primary-color;
-    box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.04);
+    box-shadow: (-2px * $transform-direction) 0px 5px rgba(0, 0, 0, 0.04);
     font-size: 20px;
     top: 50%;
     transform: translateY(-50%);
@@ -5782,7 +5844,7 @@ input:-webkit-autofill {
   font-size: 90%;
   opacity: 1;
   top: -0.4em;
-  left: 0.75rem;
+  #{$start-direction}: 0.75rem;
   z-index: 3;
   line-height: 1;
   padding: 0 1px;
@@ -5795,8 +5857,8 @@ input:-webkit-autofill {
   position: absolute;
   height: 5px;
   top: 3px;
-  left: -0.2em;
-  right: -0.2em;
+  #{$start-direction}: -0.2em;
+  #{$end-direction}: -0.2em;
   z-index: -1;
 }
 
@@ -5859,25 +5921,31 @@ input:-webkit-autofill {
 
 .input-group .has-float-label:not(:last-child),
 .input-group .has-float-label:not(:last-child) .form-control {
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
-  border-right: 0;
+  border-bottom-#{$end-direction}-radius: 0;
+  border-top-#{$end-direction}-radius: 0;
+  border-#{$end-direction}: 0;
 }
 
 .input-group .has-float-label:not(:first-child),
 .input-group .has-float-label:not(:first-child) .form-control {
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
+  border-bottom-#{$start-direction}-radius: 0;
+  border-top-#{$start-direction}-radius: 0;
 }
 
 .form-group.has-top-label .form-control,
 .form-group.has-top-label .vue-tagsinput,
 .form-group.has-top-label .vdp-datepicker>div>input {
-  padding: 1.7rem 0.75rem 0.5rem 0.75rem !important;
+  padding-top: 1.7rem !important;
+  padding-#{$end-direction}: 0.75rem !important;
+  padding-bottom: 0.5rem !important;
+  padding-#{$start-direction}: 0.75rem !important;
 }
 
 .form-group.has-top-label .vs__selected-options input {
-  padding: 1.1rem 0.4rem 0.5rem 0.4rem !important;
+  padding-top: 1.1rem !important;
+  padding-#{$end-direction}: 0.4rem !important;
+  padding-bottom: 0.5rem !important;
+  padding-#{$start-direction}: 0.4rem !important;
 }
 
 .has-top-label {
@@ -5913,7 +5981,7 @@ input:-webkit-autofill {
   font-size: 76%;
   opacity: 1;
   top: 0.7rem;
-  left: 0.75rem;
+  #{$start-direction}: 0.75rem;
   z-index: 3;
   line-height: 1;
   padding: 0 1px;
@@ -5927,8 +5995,8 @@ input:-webkit-autofill {
   position: absolute;
   height: 2px;
   top: 50%;
-  left: -0.2em;
-  right: -0.2em;
+  #{$start-direction}: -0.2em;
+  #{$end-direction}: -0.2em;
   z-index: -1;
 }
 
@@ -5973,7 +6041,7 @@ input:-webkit-autofill {
 .has-top-label .react-select__single-value {
   top: unset !important;
   bottom: -3px !important;
-  margin-left: 0 !important;
+  margin-#{$start-direction}: 0 !important;
 }
 
 .input-group .has-top-label {
@@ -6003,15 +6071,15 @@ input:-webkit-autofill {
 
 .input-group .has-top-label:not(:last-child),
 .input-group .has-top-label:not(:last-child) .form-control {
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
-  border-right: 0;
+  border-bottom-#{$end-direction}-radius: 0;
+  border-top-#{$end-direction}-radius: 0;
+  border-#{$end-direction}: 0;
 }
 
 .input-group .has-top-label:not(:first-child),
 .input-group .has-top-label:not(:first-child) .form-control {
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
+  border-bottom-#{$start-direction}-radius: 0;
+  border-top-#{$start-direction}-radius: 0;
 }
 
 .form-group.has-top-label .form-control,
@@ -6026,7 +6094,10 @@ input:-webkit-autofill {
 
 .form-group.has-top-label select.form-control:not([size]):not([multiple]) {
   height: calc(3.3rem + 2px);
-  padding: 1.7rem 0.75rem 0.5rem 0.5rem;
+  padding-top: 1.7rem;
+  padding-#{$end-direction}: 0.75rem;
+  padding-bottom: 0.5rem;
+  padding-#{$start-direction}: 0.5rem;
 }
 
 /* 35.Loading */
@@ -6039,7 +6110,7 @@ input:-webkit-autofill {
   border-top-color: $theme-color-1;
   animation: spin 1s ease-in-out infinite;
   -webkit-animation: spin 1s ease-in-out infinite;
-  left: calc(50% - 15px);
+  #{$start-direction}: calc(50% - 15px);
   top: calc(50% - 15px);
   position: fixed;
   z-index: 1;
@@ -6063,8 +6134,8 @@ input:-webkit-autofill {
   @include depth(2);
 }
 
-.modal-right .modal {
-  padding-right: 0 !important;
+.modal-#{$end-direction} .modal {
+  padding-#{$end-direction}: 0 !important;
 }
 
 .v-contextmenu {
@@ -6098,7 +6169,7 @@ input:-webkit-autofill {
       font-family: "Nunito", sans-serif;
       font-size: 0.8rem;
       font-weight: 400;
-      margin-left: 0.5rem;
+      margin-#{$start-direction}: 0.5rem;
       line-height: 15px;
     }
   }
@@ -6136,14 +6207,14 @@ input:-webkit-autofill {
   position: absolute;
 }
 
-.v-contextmenu .v-contextmenu-submenu>.v-contextmenu.left {
-  left: 0;
-  transform: translateX(-100%);
+.v-contextmenu .v-contextmenu-submenu>.v-contextmenu.#{$start-direction} {
+  #{$start-direction}: 0;
+  transform: translateX(-100% * $transform-direction);
 }
 
-.v-contextmenu .v-contextmenu-submenu>.v-contextmenu.right {
-  right: 0;
-  transform: translateX(100%);
+.v-contextmenu .v-contextmenu-submenu>.v-contextmenu.#{$end-direction} {
+  #{$end-direction}: 0;
+  transform: translateX(100% * $transform-direction);
 }
 
 .v-contextmenu .v-contextmenu-submenu>.v-contextmenu.top {
@@ -6155,19 +6226,19 @@ input:-webkit-autofill {
 }
 
 .v-contextmenu .v-contextmenu-submenu .v-contextmenu-submenu__title {
-  margin-right: 10px;
+  margin-#{$end-direction}: 10px;
 }
 
 .v-contextmenu .v-contextmenu-submenu .v-contextmenu-submenu__icon {
   position: absolute;
-  right: 5px;
+  #{$end-direction}: 5px;
 }
 
 .v-contextmenu .v-contextmenu-submenu .v-contextmenu-submenu__icon::before {
   content: "\e622";
 }
 
-.v-contextmenu--bright .v-contextmenu-item--hover {
+.v-contextmenu--b#{$end-direction} .v-contextmenu-item--hover {
   background-color: #ef5350;
 }
 
@@ -6182,9 +6253,9 @@ input:-webkit-autofill {
   height: 1.2em;
   border-radius: 0.75em;
   line-height: initial;
-  left: 50%;
+  #{$start-direction}: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50% * $transform-direction, -50%);
   font-size: 3.5em;
   width: 2.5em;
   border: 0.06666em solid $input-background;
@@ -6213,7 +6284,7 @@ input:-webkit-autofill {
   .vjs-control.vjs-button,
   .vjs-remaining-time,
   .vjs-volume-panel {
-    margin-right: 0.5em;
+    margin-#{$end-direction}: 0.5em;
     background: $input-background;
     color: $theme-color-1;
     border-radius: 15px;
@@ -6223,7 +6294,7 @@ input:-webkit-autofill {
   .vjs-progress-control.vjs-control {
     background: $input-background;
     border-radius: 15px;
-    margin-right: 0.5em;
+    margin-#{$end-direction}: 0.5em;
     @include depth(2);
   }
 
@@ -6265,7 +6336,7 @@ input:-webkit-autofill {
   }
 
   .vjs-volume-horizontal {
-    margin-left: -1.5em;
+    margin-#{$start-direction}: -1.5em;
     width: 4em;
   }
 
