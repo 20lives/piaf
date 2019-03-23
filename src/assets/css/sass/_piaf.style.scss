@@ -1486,7 +1486,12 @@ button {
   margin-bottom: 0.5rem;
 }
 
-.breadcrumb-item+.breadcrumb-item::before {
+.breadcrumb-item + .breadcrumb-item {
+  padding-#{$end-direction}: 0 !important;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  padding-#{$end-direction}: .5rem !important;
   content: "|";
 }
 
