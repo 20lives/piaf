@@ -1660,6 +1660,7 @@ button {
   @include depth(1);
 
   .notificationDropdown {
+    text-align: $start-direction;
     width: 260px;
     padding: 1.5rem;
     height: 280px;
