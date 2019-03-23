@@ -114,16 +114,20 @@
     </b-row>
     <b-row v-if="lastPage>1">
       <b-colxx xxs="12">
-        <b-pagination-nav 
-          :number-of-pages="lastPage"  
-          :link-gen="linkGen" 
-          v-model="page" :per-page="perPage"
-          align="center"
-          next-text="<i class='simple-icon-arrow-right' />"
-          prev-text="<i class='simple-icon-arrow-left' />"
-          first-text="<i class='simple-icon-control-start' />"
-          last-text="<i class='simple-icon-control-end' />"
-      />
+        <b-pagination-nav :number-of-pages="lastPage"  :link-gen="linkGen" v-model="page" :per-page="perPage" align="center" >
+          <span slot="next-text">
+            <i class="simple-icon-arrow-right" />
+          </span>
+          <span slot="prev-text">
+            <i class="simple-icon-arrow-left" />
+          </span>
+          <span slot="first-text">
+            <i class="simple-icon-control-start" />
+          </span>
+          <span slot="last-text">
+            <i class="simple-icon-control-end" />
+          </span>
+        </b-pagination-nav>
       </b-colxx>
     </b-row>
     

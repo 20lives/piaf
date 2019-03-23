@@ -10,7 +10,7 @@
       <ul class="pagination justify-content-center pagination-sm">
     <li :class="{'disabled': isOnFirstPage,'page-item':true}">
       <a class="page-link" href="" @click.prevent="loadPage('prev')">
-        <span><i class='simple-icon-arrow-left' /></span>
+        <span><i class="simple-icon-arrow-left" /></span>
       </a>
     </li>
     
@@ -27,7 +27,7 @@
 
     <li :class="{'disabled': isOnLastPage,'page-item':true}">
       <a class="page-link" href="" @click.prevent="loadPage('next')">
-        <span><i class='simple-icon-arrow-right' /></span>
+        <span><i class="simple-icon-arrow-right" /></span>
       </a>
     </li>
   </ul>
