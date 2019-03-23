@@ -3902,6 +3902,10 @@ select.form-control:not([size]):not([multiple]) {
   }
 }
 
+.dropdown-toggle::after {
+    display:none;
+}
+
 .v-select .dropdown-toggle::after {
   display: none;
 }
