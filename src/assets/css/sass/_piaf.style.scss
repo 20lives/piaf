@@ -126,6 +126,8 @@ html {
 }
 
 body {
+  direction: $direction;
+  text-align: $start-direction;
   font-family: "Nunito", sans-serif;
   font-size: 0.8rem;
   font-weight: 400;
