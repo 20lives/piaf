@@ -9,8 +9,9 @@ export const menuHiddenBreakpoint = 768;
 
 export const defaultLocale = "en";
 export const localeOptions=[
-    {id:'en',name:'English'},
-    {id:'es',name:'Español'},
+  {id:'en', name:'English', direction:'ltr'},
+  {id:'es', name:'Español', direction:'ltr'},
+  {id:'he', name:'Hebrew', direction:'rtl'},
 ];
 
 

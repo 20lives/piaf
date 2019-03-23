@@ -11,10 +11,11 @@ import {store} from "./store"
 import App from "./App";
 import en from "./locales/en.json";
 import es from "./locales/es.json";
+import he from "./locales/he.json";
 
 import VueI18n from 'vue-i18n';
 Vue.use(VueI18n);
-const messages = { en: en, es:es };
+const messages = { en: en, he: he, es: es };
 import {defaultLocale,localeOptions} from 'constants/config'
 const locale =(localStorage.getItem('currentLanguage') && localeOptions.filter(x=>x.id==localStorage.getItem('currentLanguage')).length>0) ? localStorage.getItem('currentLanguage') : defaultLocale
 const i18n = new VueI18n({
