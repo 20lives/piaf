@@ -40,6 +40,7 @@ Table of Contents
 35.Loading
 36.Context Menu
 37.Videojs
+38.Direction
 
 */
 
@@ -6385,4 +6386,13 @@ input:-webkit-autofill {
 
 .resize-observer {
   height: 0px !important;
+}
+/*38.Direction*/
+
+.list-unstyled {
+    padding-#{$start-direction}: 0;
+    list-style: none;
+}
+.ml-auto-rtl {
+    margin-#{$start-direction}: auto !important;
 }
