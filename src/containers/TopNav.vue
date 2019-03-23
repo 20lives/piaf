@@ -25,7 +25,7 @@
             <span class="logo-mobile d-block d-xs-none"></span>
         </router-link>
 
-          <div class="ml-auto">
+          <div class="ml-auto-rtl">
           <div class="header-icons d-inline-block align-middle">
             <div class="position-relative d-none d-none d-lg-inline-block">
               <a class="btn btn-outline-primary btn-sm mb-2 mr-3" target="_top" :href="buyUrl">{{$t('user.buy')}}</a>
