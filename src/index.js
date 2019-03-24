@@ -17,8 +17,12 @@ var color = 'light.orange';
 if (localStorage.getItem('themeColor')) {
   color = localStorage.getItem('themeColor');
 }
+var dir = 'rtl';
+if (localStorage.getItem('direction')) {
+  dir = localStorage.getItem('direction');
+}
 let render = () => {
-    const css = import('./assets/css/sass/themes/piaf.' + color + '.scss')
+    const css = import('./assets/css/sass/themes/' + dir + '/piaf.' + color + '.scss')
     .then(x => {
       const MainApp = require('./main');
     })
