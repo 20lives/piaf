@@ -17,7 +17,7 @@
                 <template slot="button-content">
                         <span  class="name">{{$i18n.locale.toUpperCase()}}</span>
                 </template>
-                <b-dropdown-item v-for="(l,index) in localeOptions" :key="index" @click="changeLocale(l.id)">{{l.name}}</b-dropdown-item>
+                <b-dropdown-item v-for="(l,index) in localeOptions" :key="index" @click="changeLocale(l.id, l.direction)">{{ l.name }}</b-dropdown-item>
             </b-dropdown>
         </div>
         <router-link class="navbar-logo" tag="a" to="/app">
@@ -154,8 +154,8 @@ export default {
             this.searchKeyword="";
         }
     },
-    changeLocale(locale){
-        this.setLang(locale)
+    changeLocale(locale, dir){
+      this.setLang({locale, dir })
     },
     logout(){
         this.signOut().then(()=> {
