@@ -735,6 +735,7 @@ button {
 }
 
 .dropdown-menu {
+  text-align: $start-direction;
   font-size: 0.8rem;
   border-radius: $border-radius;
   background: $input-background;
@@ -4705,6 +4706,12 @@ input:-webkit-autofill {
   padding: 0.5rem 0.5rem;
 }
 
+.pagination {
+  @if $start-direction == 'right' {
+    flex-direction: row-reverse;
+  }
+}
+
 .pagination-lg {
   .page-item {
     padding: 15px;
@@ -6405,4 +6412,8 @@ input:-webkit-autofill {
 }
 .ml-auto-rtl {
     margin-#{$start-direction}: auto !important;
+}
+
+.text-align {
+  text-align: $start-direction;
 }
